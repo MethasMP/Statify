@@ -35,6 +35,8 @@ build/
 .mvn/
 mvnw
 mvnw.cmd
+.m2/
+home/
 
 ### OS ###
 .DS_Store
@@ -47,22 +49,3 @@ logs/
 ### Config ###
 application-local.yml
 *.env
-
-### Frontend ###
-frontend/node_modules/
-frontend/.next/
-frontend/.loki/
-frontend/out/
-frontend/dist/
-frontend/.npm-cache/
-*.tsbuildinfo
-
-### Build Artifacts ###
-backend.zip
-*.jar
-
-### Secrets ###
-runner.sh
-
-### Temp ###
-backend.zip

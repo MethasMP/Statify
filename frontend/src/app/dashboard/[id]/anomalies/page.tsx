@@ -1,0 +1,40 @@
+export const dynamic = "force-dynamic";
+import { Suspense } from "react";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  return {
+    title: `Anomaly Review | Statify_OS`,
+    description: "Review and resolve flagged anomalies from AI processing.",
+  };
+}
+
+import ErrorBoundary from "@/components/ErrorBoundary";
+import SuspenseLoader from "@/components/SuspenseLoader";
+import AnomalyReviewView from "./AnomalyReviewView";
+
+export default function AnomalyReviewPage({ params }: { params: { id: string } }) {
+  return (
+    <main className="min-h-screen">
+      <nav className="border-b border-border px-8 py-4 mb-4 bg-background/80 backdrop-blur sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <a href="/" className="font-mono font-black text-lg tracking-tighter uppercase hover:text-accent transition-colors">
+            Statify_v1.0
+          </a>
+          <div className="flex items-center gap-6">
+            <a href={`/dashboard/${params.id}`}
+               className="font-mono text-[9px] text-muted-foreground hover:text-accent transition-colors uppercase tracking-widest">
+              ← Back to Dashboard
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <ErrorBoundary>
+        <Suspense fallback={<SuspenseLoader />}>
+          <AnomalyReviewView id={params.id} />
+        </Suspense>
+      </ErrorBoundary>
+    </main>
+  );
+}
