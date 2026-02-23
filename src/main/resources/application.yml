@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: statify-backend
+  datasource:
+    url: jdbc:postgresql://${SUPABASE_DB_HOST:db.xovexjnrbtnselpsijvi.supabase.co}:5432/postgres
+    username: postgres
+    password: ${SUPABASE_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+server:
+  port: 8080

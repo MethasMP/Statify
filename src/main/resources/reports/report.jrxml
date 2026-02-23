@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" 
+              name="FinancialReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a1b2c3d4-e5f6-7890-1234-567890abcdef">
+    
+    <parameter name="uploadId" class="java.lang.String"/>
+    <parameter name="totalIncome" class="java.math.BigDecimal"/>
+    <parameter name="totalExpense" class="java.math.BigDecimal"/>
+    <parameter name="netBalance" class="java.math.BigDecimal"/>
+    
+    <field name="txnDate" class="java.time.LocalDate"/>
+    <field name="description" class="java.lang.String"/>
+    <field name="amount" class="java.math.BigDecimal"/>
+    <field name="categoryName" class="java.lang.String"/>
+
+    <title>
+        <band height="100" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="0" width="555" height="30" uuid="e0a1b2c3-d4e5-f678-9012-34567890abcd"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="20" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Statify Financial Report]]></text>
+            </staticText>
+            
+            <staticText>
+                <reportElement x="0" y="40" width="100" height="20" uuid="1234abcd-5678-ef90-1234-567890abcdef"/>
+                <text><![CDATA[Total Income:]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight">
+                <reportElement x="100" y="40" width="100" height="20" uuid="5678abcd-1234-ef90-5678-9012abcdef34"/>
+                <textFieldExpression><![CDATA[$P{totalIncome}]]></textFieldExpression>
+            </textField>
+
+            <staticText>
+                <reportElement x="0" y="60" width="100" height="20" uuid="fedcba09-8765-4321-fedc-ba0987654321"/>
+                <text><![CDATA[Total Expense:]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight">
+                <reportElement x="100" y="60" width="100" height="20" uuid="abcdef01-2345-6789-abcd-ef0123456789"/>
+                <textFieldExpression><![CDATA[$P{totalExpense}]]></textFieldExpression>
+            </textField>
+            
+            <staticText>
+                <reportElement x="0" y="80" width="100" height="20" uuid="98765432-10fe-dcba-9876-543210fedcba"/>
+                <text><![CDATA[Net Balance:]]></text>
+            </staticText>
+            <textField textAdjust="StretchHeight">
+                <reportElement x="100" y="80" width="100" height="20" uuid="11223344-5566-7788-9900-aabbccddeeff"/>
+                <textFieldExpression><![CDATA[$P{netBalance}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    
+    <columnHeader>
+        <band height="30" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="0" width="100" height="20" uuid="acabacab-acab-acab-acab-acabacabacab"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[Date]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="100" y="0" width="200" height="20" uuid="bcbcbcbc-bcbc-bcbc-bcbc-bcbcbcbcbcbc"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[Description]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="300" y="0" width="100" height="20" uuid="cdcdcdcd-cdcd-cdcd-cdcd-cdcdcdcdcdcd"/>
+                <textElement><font isBold="true"/></textElement>
+                <text><![CDATA[Category]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="400" y="0" width="100" height="20" uuid="dededede-dede-dede-dede-dededededede"/>
+                <textElement textAlignment="Right"><font isBold="true"/></textElement>
+                <text><![CDATA[Amount]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    
+    <detail>
+        <band height="20" splitType="Stretch">
+            <textField textAdjust="StretchHeight">
+                <reportElement x="0" y="0" width="100" height="20" uuid="efefefef-efef-efef-efef-efefefefefef"/>
+                <textFieldExpression><![CDATA[$F{txnDate}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="StretchHeight">
+                <reportElement x="100" y="0" width="200" height="20" uuid="f0f0f0f0-f0f0-f0f0-f0f0-f0f0f0f0f0f0"/>
+                <textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="StretchHeight">
+                <reportElement x="300" y="0" width="100" height="20" uuid="0a0a0a0a-0a0a-0a0a-0a0a-0a0a0a0a0a0a"/>
+                <textFieldExpression><![CDATA[$F{categoryName}]]></textFieldExpression>
+            </textField>
+            <textField textAdjust="StretchHeight">
+                <reportElement x="400" y="0" width="100" height="20" uuid="1b1b1b1b-1b1b-1b1b-1b1b-1b1b1b1b1b1b"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>
